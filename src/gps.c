@@ -132,6 +132,9 @@ uint8_t parse_gsv_frame(gps_frame_t * frame, gsv_frame_t* gsv_frame){
         gsv_frame -> elev[i] = atoi(frame->term[4 + i*4 + 1].string);
         gsv_frame -> azimuth[i] = atoi(frame->term[4 + i*4 + 2].string);
         gsv_frame -> snr[i] = atoi(frame->term[4 + i*4 + 3].string);
+        if(frame->max_term == (4 + i*4 +3 +2)){
+            break;
+        }
     }
 
     printf("sentences: %d sentence: %d satellites: %d\n", gsv_frame -> num_sentence, gsv_frame -> s_num, gsv_frame -> num_sats);
